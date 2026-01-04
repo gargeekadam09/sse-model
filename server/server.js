@@ -26,6 +26,11 @@ app.get("/events", (req, res) => {
 
   // Send welcome message
   res.write(`data: Connected to broadcast server\n\n`);
+  
+  // Send immediate test message for latency testing
+  setTimeout(() => {
+    res.write(`data: Test message for latency\n\n`);
+  }, 100);
 
   // Handle client disconnect
   req.on("close", () => {
